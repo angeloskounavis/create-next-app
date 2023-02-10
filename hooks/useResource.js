@@ -32,7 +32,7 @@ export default function useResource() {
         try {
             const options = config();
             options.method = "POST",
-                options.body = JSON.stringify(info);
+            options.body = JSON.stringify(info);
             await fetch(apiUrl, options);
             mutate(); // mutate causes complete collection to be refetched
         } catch (err) {
