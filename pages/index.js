@@ -4,9 +4,13 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import CreateForm from '../components/CreateForm';
 import ReportTable from '../components/ReportTable';
+import { useAuth } from '../contexts/auth';
+import userResource from '../hooks/useResource'
 
 
 export default function Home() {
+
+  const { user, login } = useAuth();
 
   const [newLocations, setNewLocations] = useState([]);
 
@@ -16,10 +20,10 @@ export default function Home() {
 
     // build an object representing the question and reply
     const newLocation = {
-        location: event.target.location.value,
-        minCustomers: event.target.min.value,
-        maxCustomers: event.target.max.value,
-        avgCustomers: event.target.avg.value,
+      location: event.target.location.value,
+      minCustomers: event.target.min.value,
+      maxCustomers: event.target.max.value,
+      avgCustomers: event.target.avg.value,
     };
 
     setNewLocations([...newLocations, newLocation]);
@@ -27,8 +31,15 @@ export default function Home() {
 
   return (
     <>
+    
       <TopHead />
-      
+
+      {user ?
+        <CookieStandAdmin />
+        :
+        <LoginForm onLogin={login} />
+      }
+
       <Header />
 
       <main>
