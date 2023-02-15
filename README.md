@@ -11,7 +11,7 @@
 npm run dev
 
 ### Deployed URl:
-- Coming soon
+- https://cookie-stand-admin-6dwx.vercel.app/
 
 
 ### Resources:
